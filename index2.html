@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combat Squad Selection</title>
+    <style>
+        :root {
+            --camo-dark: #4b5320;
+            --camo-mid: #7e8455;
+            --camo-light: #a3a375;
+            --camo-tan: #b7a888;
+            --accent: #c1a62e;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #1a1a1a;
+            background-image: 
+                linear-gradient(45deg, 
+                    rgba(75, 83, 32, 0.4) 25%, 
+                    rgba(67, 75, 29, 0.4) 25%, 
+                    rgba(67, 75, 29, 0.4) 50%, 
+                    rgba(75, 83, 32, 0.4) 50%, 
+                    rgba(75, 83, 32, 0.4) 75%, 
+                    rgba(67, 75, 29, 0.4) 75%, 
+                    rgba(67, 75, 29, 0.4));
+            background-size: 40px 40px;
+            font-family: 'Courier New', monospace;
+            color: #e0e0e0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 30px;
+            border: 2px solid var(--accent);
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(193, 166, 46, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: rgba(193, 166, 46, 0.5);
+            animation: scanline 2s linear infinite;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px double var(--accent);
+            padding-bottom: 20px;
+            position: relative;
+        }
+
+        .header::before, .header::after {
+            content: '★';
+            color: var(--accent);
+            position: absolute;
+            bottom: -15px;
+            font-size: 24px;
+        }
+
+        .header::before { left: 20px; }
+        .header::after { right: 20px; }
+
+        .header h1 {
+            color: var(--accent);
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(193, 166, 46, 0.5);
+            letter-spacing: 3px;
+        }
+
+        .requirements {
+            background: linear-gradient(
+                45deg,
+                rgba(75, 83, 32, 0.3),
+                rgba(67, 75, 29, 0.3)
+            );
+            padding: 20px;
+            border-left: 4px solid var(--accent);
+            margin-bottom: 25px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .requirements h3 {
+            color: var(--accent);
+            margin-top: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .requirements ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .requirements li {
+            padding: 5px 0 5px 25px;
+            position: relative;
+        }
+
+        .requirements li::before {
+            content: '►';
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+            font-size: 12px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px solid rgba(193, 166, 46, 0.3);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 1px solid var(--accent);
+            border-radius: 4px;
+            color: #e0e0e0;
+            font-family: 'Courier New', monospace;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(193, 166, 46, 0.5);
+        }
+
+        button {
+            background: linear-gradient(
+                45deg,
+                var(--camo-dark),
+                var(--camo-mid)
+            );
+            color: #e0e0e0;
+            padding: 15px 30px;
+            border: 2px solid var(--accent);
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            text-transform: uppercase;
+            width: 100%;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button:hover {
+            background: var(--accent);
+            color: #000;
+            box-shadow: 0 0 15px rgba(193, 166, 46, 0.5);
+        }
+
+        .classification {
+            color: var(--accent);
+            text-align: center;
+            font-weight: bold;
+            margin: 20px 0;
+            padding: 10px;
+            border-top: 1px solid var(--accent);
+            border-bottom: 1px solid var(--accent);
+            letter-spacing: 2px;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .status {
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 15px;
+            display: none;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .error {
+            background-color: rgba(200, 0, 0, 0.2);
+            border: 1px solid #800000;
+            color: #ff4444;
+        }
+
+        .success {
+            background-color: rgba(0, 100, 0, 0.2);
+            border: 1px solid #006400;
+            color: #00ff00;
+        }
+
+        .military-badge {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            background: var(--accent);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .military-badge::before {
+            content: '★';
+            font-size: 40px;
+            color: #000;
+        }
+
+        select {
+            appearance: none;
+            background-image: linear-gradient(45deg, transparent 50%, var(--accent) 50%),
+                            linear-gradient(135deg, var(--accent) 50%, transparent 50%);
+            background-position: calc(100% - 20px) calc(1em + 2px),
+                               calc(100% - 15px) calc(1em + 2px);
+            background-size: 5px 5px,
+                           5px 5px;
+            background-repeat: no-repeat;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .military-badge {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="classification">
+            TOP SECRET // SPECIAL ACCESS REQUIRED
+        </div>
+
+        <div class="header">
+            <div class="military-badge"></div>
+            <h1>Combat Squad Selection</h1>
+            <p>Special Operations Combat Unit Assessment</p>
+        </div>
+
+        <div class="requirements">
+            <h3>Minimum Requirements:</h3>
+            <ul>
+                <li>Active duty service member, Tier 1 unit experience preferred</li>
+                <li>Minimum rank of E-4 (Corporal/Specialist)</li>
+                <li>Advanced combat training certification</li>
+                <li>Physical fitness test score of 270 or higher</li>
+                <li>Top Secret/SCI clearance required</li>
+                <li>Combat deployment experience</li>
+                <li>Advanced weapons qualification</li>
+                <li>Special operations background preferred</li>
+            </ul>
+        </div>
+
+        <form id="recruitmentForm">
+            <div class="form-group">
+                <label for="fullName">Full Name (Last, First, MI)</label>
+                <input type="text" id="fullName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="serviceNumber">Service Number/DoD ID</label>
+                <input type="text" id="serviceNumber" required>
+            </div>
+
+            <div class="form-group">
+                <label for="rank">Current Rank</label>
+                <select id="rank" required>
+                    <option value="">Select Rank</option>
+                    <option value="e4">E-4 (CPL/SPC)</option>
+                    <option value="e5">E-5 (SGT)</option>
+                    <option value="e6">E-6 (SSG)</option>
+                    <option value="e7">E-7 (SFC)</option>
+                    <option value="e8">E-8 (MSG/1SG)</option>
+                    <option value="e9">E-9 (SGM/CSM)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="unit">Current Unit Assignment</label>
+                <input type="text" id="unit" required>
+            </div>
+
+            <div class="form-group">
+                <label for="mos">Primary MOS/Combat Specialty</label>
+                <input type="text" id="mos" required>
+            </div>
+
+            <div class="form-group">
+                <label for="clearance">Security Clearance Level</label>
+                <select id="clearance" required>
+                    <option value="">Select Clearance</option>
+                    <option value="secret">Secret</option>
+                    <option value="topsecret">Top Secret</option>
+                    <option value="sci">TS/SCI</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="ptScore">Current Physical Fitness Score</label>
+                <input type="number" id="ptScore" min="0" max="300" required>
+            </div>
+
+            <div class="form-group">
+                <label for="combatDeployments">Combat Deployment History</label>
+                <textarea id="combatDeployments" rows="3" 
+                    placeholder="List locations, dates, and operation names..." required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="specialQuals">Special Qualifications</label>
+                <textarea id="specialQuals" rows="3" 
+                    placeholder="List combat schools, special training, certifications..." required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="weapons">Advanced Weapons Qualifications</label>
+                <select id="weapons" required>
+                    <option value="">Select Qualification</option>
+                    <option value="expert">Expert - All Weapons</option>
+                    <option value="advanced">Advanced Qualified</option>
+                    <option value="instructor">Combat Instructor</option>
+                    <option value="master">Master Gunner</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="specialOps">Special Operations Experience</label>
+                <textarea id="specialOps" rows="3" 
+                    placeholder="Detail your special operations experience..." required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="medicalStatus">Combat Ready Status</label>
+                <select id="medicalStatus" required>
+                    <option value="">Select Status</option>
+                    <option value="fully">Full Combat Ready</option>
+                    <option value="limited">Limited Duty</option>
+                    <option value="medical">Medical Review Required</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="contact">Secure Contact Information</label>
+                <input type="email" placeholder="Military Email" required style="margin-bottom: 10px;">
+                <input type="tel" placeholder="Secure Line (DSN)" required>
+            </div>
+
+            <div class="form-group">
+                <label for="commander">Command Authorization</label>
+                <input type="text" placeholder="Commander's Name and Rank" required style="margin-bottom: 10px;">
+                <input type="tel" placeholder="Command Post Contact Number" required>
+            </div>
+
+            <button type="submit">Submit For Review</button>
+        </form>
+
+        <div id="statusMessage" class="status"></div>
+
+        <div class="classification">
+            TOP SECRET // NOFORN // SPECIAL ACCESS REQUIRED
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('recruitmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const ptScore = parseInt(document.getElementById('ptScore').value);
+            const clearance = document.getElementById('clearance').value;
+            const statusMessage = document.getElementById('statusMessage');
+            
+            if (ptScore < 270) {
+                statusMessage.textContent = "NOTICE: Minimum PT score of 270 required for combat operations.";
+                statusMessage.className = "status error";
+                statusMessage.style.display = "block";
+                return;
+            }
+
+            if (clearance !== 'sci') {
+                statusMessage.textContent = "NOTICE: TS/SCI clearance required for this unit.";
+                statusMessage.className = "status error";
+                statusMessage.style.display = "block";
+                return;
+            }
+            
+            statusMessage.textContent = "ACKNOWLEDGED: Your application has been submitted for review. " +
+                "If selected, you will be contacted through secure channels within 72 hours. " +
+                "MAINTAIN RADIO SILENCE.";
+            statusMessage.className = "status success";
+            statusMessage.style.display = "block";
+        });
+    </script>
+</body>
+</html>
