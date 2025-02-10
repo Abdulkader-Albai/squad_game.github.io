@@ -1,247 +1,782 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Ultimate Balding Roast</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #ff6b6b, #feca57);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 800px;
-        }
-
-        h1 {
-            font-size: 3em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            margin-bottom: 30px;
-        }
-
-        .bald-head {
-            font-size: 100px;
-            margin: 20px;
-            animation: shine 2s infinite;
-            cursor: pointer;
-            user-select: none;
-        }
-
-        .message {
-            font-size: 1.5em;
-            margin: 20px;
-            background: rgba(0,0,0,0.2);
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        @keyframes shine {
-            0% { text-shadow: 0 0 5px yellow; }
-            50% { text-shadow: 0 0 20px yellow, 0 0 30px yellow; }
-            100% { text-shadow: 0 0 5px yellow; }
-        }
-
-        .savage-burns {
-            font-size: 24px;
-            margin: 20px;
-            padding: 20px;
-            background: rgba(0,0,0,0.2);
-            border-radius: 10px;
-            min-height: 100px;
-        }
-
-        #burnCounter {
-            font-size: 18px;
-            margin-top: 20px;
-            color: #ffe066;
-        }
-
-        @media (max-width: 600px) {
-            h1 { font-size: 2em; }
-            .message { font-size: 1.2em; }
-        }
-    </style>
+    <title>420 Cave HQ 🌿</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Smooch+Sans:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>30 & Balding: The Ultimate Roast</h1>
-        
-        <div class="bald-head" id="baldHead">👨‍🦲</div>
-        
-        <div class="message">
-            Warning: These roasts are shinier than your head
+    <!-- LED Strip Effect -->
+    <div class="led-strip top"></div>
+    <div class="led-strip bottom"></div>
+    <div class="led-strip left"></div>
+    <div class="led-strip right"></div>
+
+    <!-- Smoke Animation -->
+    <div class="smoke-container">
+        <div class="smoke"></div>
+    </div>
+
+    <!-- Audio Player -->
+    <audio id="backgroundMusic" loop>
+        <source src="https://example.com/your-music.mp3" type="audio/mp3">
+    </audio>
+
+    <div class="content">
+        <!-- Header Section -->
+        <header class="cave-header">
+            <div class="neon-sign">
+                <span class="flicker-slow">4</span>
+                <span class="flicker-fast">2</span>
+                <span>0</span>
+                <span class="flicker-slow">C</span>
+                <span class="flicker-fast">A</span>
+                <span>V</span>
+                <span class="flicker-slow">E</span>
+            </div>
+            <p class="neon-subtitle">Blaze • Game • Repeat</p>
+        </header>
+
+        <div class="cave-grid">
+            <!-- Left Wall -->
+            <div class="wall left-wall">
+                <!-- Mood Meter -->
+                <div class="brick-panel">
+                    <h2>VIBE CHECK</h2>
+                    <div class="lava-lamp">
+                        <div class="blaze-meter">
+                            <div class="blaze-level" id="blaze-level"></div>
+                        </div>
+                    </div>
+                    <button class="wood-button" id="blaze-button">
+                        Spark Up 🔥
+                    </button>
+                </div>
+
+                <!-- Music Corner -->
+                <div class="brick-panel">
+                    <h2>SOUND SYSTEM</h2>
+                    <div class="retro-player">
+                        <button class="wood-button" id="playMusic">
+                            <span class="vinyl-record">💿</span> Play
+                        </button>
+                        <div class="eq-visualizer">
+                            <div class="eq-bar"></div>
+                            <div class="eq-bar"></div>
+                            <div class="eq-bar"></div>
+                            <div class="eq-bar"></div>
+                        </div>
+                        <input type="range" id="volumeControl" class="wooden-slider" min="0" max="100" value="50">
+                        <select id="playlistSelect" class="wood-select">
+                            <option value="chill">Chill Hop</option>
+                            <option value="reggae">Reggae Vibes</option>
+                            <option value="lofi">Lo-Fi Beats</option>
+                            <option value="classic">Classic Rock</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center Area -->
+            <div class="center-area">
+                <!-- Gaming Zone -->
+                <div class="gaming-zone">
+                    <h2>SQUAD STATUS</h2>
+                    <div class="tv-screen">
+                        <div class="champions-grid">
+                            <div class="champ-card">
+                                <div class="smoke-effect"></div>
+                                <div class="champion-icon">🗡️</div>
+                                <h3>Yasuo</h3>
+                                <p>0/10 Powerspike</p>
+                            </div>
+                            <div class="champ-card">
+                                <div class="smoke-effect"></div>
+                                <div class="champion-icon">🍄</div>
+                                <h3>Teemo</h3>
+                                <p>Shroom Lord</p>
+                            </div>
+                            <div class="champ-card">
+                                <div class="smoke-effect"></div>
+                                <div class="champion-icon">🌟</div>
+                                <h3>Lux</h3>
+                                <p>Rainbow Vibes</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Session Log -->
+                <div class="session-screen">
+                    <div class="screen-overlay"></div>
+                    <div class="session-log" id="session-log">
+                        <div>[CAVE] Welcome to the 420 Cave... 🌿</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Wall -->
+            <div class="wall right-wall">
+                <!-- Dip Counter -->
+                <div class="brick-panel">
+                    <h2>DIP COUNTER</h2>
+                    <div class="rolling-tray">
+                        <input type="text" id="dipInput" class="parchment-input" placeholder="Who's up?" maxlength="20">
+                        <button class="wood-button" id="dipButton">
+                            Pack Bowl 🌿
+                        </button>
+                    </div>
+                    <div class="scroll-panel" id="dip-stats">
+                        <!-- Dip stats will appear here -->
+                    </div>
+                </div>
+
+                <!-- Feeder Board -->
+                <div class="brick-panel">
+                    <h2>HALL OF SHAME</h2>
+                    <div class="wanted-poster">
+                        <input type="text" id="feederInput" class="parchment-input" placeholder="Name the feeder..." maxlength="20">
+                        <button class="wood-button" id="feedButton">
+                            Post Bounty 💀
+                        </button>
+                        <div class="scroll-panel" id="feed-stats">
+                            <!-- Feeder stats will appear here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="savage-burns" id="roastDisplay">
-            Click the bald head for devastating roasts!
+        <!-- Easter Egg Items (randomly placed) -->
+        <div class="easter-eggs">
+            <div class="bong hidden">🌿</div>
+            <div class="pizza-box hidden">🍕</div>
+            <div class="game-controller hidden">🎮</div>
         </div>
-
-        <div id="burnCounter">Roasts delivered: 0</div>
-
-        <script>
-            const roasts = [
-                // Original roasts
-                "Your hairline is playing hide and seek, and it's winning",
-                "You're not balding, your head is just growing",
-                "Your forehead is so big, it's more like a five-head",
-                
-                // Personal life roasts
-                "Your dating profile says 'love long walks on the beach' but your head says 'love long walks under umbrellas'",
-                "You don't need a mirror to do your hair anymore, just a cloth to polish",
-                "Your hair didn't leave you, it just went to find someone more committed",
-                "You're not losing hair, you're gaining face",
-                "Your head is so reflective, you're single-handedly fighting global warming",
-                "You don't go bald, you level up to premium dome status",
-                "Your hair took early retirement at 30",
-                "Your head is so shiny, it's causing light pollution",
-                "You could rent out your forehead as advertising space",
-                "Your hairline is social distancing from your eyebrows",
-                "You're not balding, you're just doing a solar panel installation",
-                "Your head doubles as an emergency signal mirror",
-                "Your hair follicles filed for unemployment",
-                "Your head is so smooth, it makes dolphins jealous",
-                "You don't need hair gel anymore, just Windex",
-                "Your head is so reflective, it's interfering with air traffic control",
-                
-                // Weather-related roasts
-                "You have to wear sunscreen on your head in the moonlight",
-                "Birds mistake your head for a small sun",
-                "Your head creates its own weather system of glare",
-                "You cause more glare than a solar farm",
-                "Your head is so shiny, it's affecting local weather patterns",
-                
-                // Technology roasts
-                "Your head has better reception than my WiFi",
-                "Your head shows up on Google Earth's highlights",
-                "Your head is brighter than my phone screen at full brightness",
-                "Satellites use your head for calibration",
-                "Your head has more gleam than a fresh iPhone screen",
-                
-                // Movie theater roasts
-                "Movie theaters ask you to dim your head during screenings",
-                "IMAX wants to study your head's reflective properties",
-                "Your head provides better projection than most movie theaters",
-                
-                // Professional life roasts
-                "You save money on lighting by just tilting your head",
-                "Your LinkedIn profile pic is just lens flare",
-                "Your head's so shiny, you got sponsored by Turtle Wax",
-                "You could get a side job as a disco ball",
-                "Your career is growing as fast as your forehead",
-                
-                // Sports-related roasts
-                "Bowling balls are jealous of your head's shine",
-                "Olympic swimmers want to study your head's aerodynamics",
-                "Your head has less resistance than a competitive swimsuit",
-                
-                // Historical roasts
-                "Your hairline is receding faster than the Roman Empire",
-                "Your baldness spread faster than the British Empire",
-                "Your hair history is shorter than a Twitter post",
-                
-                // Scientific roasts
-                "Your head defies the laws of reflection",
-                "Scientists study your head to understand black holes",
-                "Your head generates more solar energy than a Tesla roof",
-                "NASA uses your head to test new telescope lenses",
-                
-                // Seasonal roasts
-                "In winter, your head melts snow faster than salt",
-                "In summer, your head causes more heat waves than global warming",
-                "Your head changes seasons faster than climate change",
-                
-                // Fashion roasts
-                "You don't need hats, you need head dimmers",
-                "Your head is more polished than your shoes",
-                "You don't wear caps, you wear satellite dishes",
-                
-                // Home life roasts
-                "Your head lights up rooms better than ceiling lights",
-                "You save on electricity by using your head as a reading light",
-                "Your head's reflection heats your home in winter",
-                
-                // Future predictions
-                "By 35, your head will be visible from Mars",
-                "In 5 years, your head will replace solar panels",
-                "Eventually, your head will become Earth's second moon",
-                
-                // Modern life roasts
-                "Your head has more shine than my future",
-                "Your reflection causes more traffic accidents than texting",
-                "Instagram can't handle your head's natural filter",
-                
-                // Additional savage burns
-                "Your hair didn't ghost you, it just saw its future and ran",
-                "You're not going bald, your hair is just socially distant",
-                "Your head is so reflective, blind people use it for echolocation",
-                "Your scalp is doing a better job at solar power than Tesla",
-                "Your head acts as a backup for the Bat-Signal",
-                "You don't need night vision, you just tilt your head toward the moon",
-                "Your hairline is more distant than my ex",
-                "Your head has better satellite reception than NASA",
-                "You're not balding, you're evolving into a human lighthouse",
-                "Your head is so shiny, it's causing climate change",
-                "Your forehead has more real estate than Manhattan",
-                "Your hair didn't leave you, it just went out for milk like your dad",
-                "Your head is brighter than my phone at 3 AM",
-                "You're not losing hair, you're gaining solar panel efficiency",
-                "Your head reflects more light than a supernova",
-                "Your scalp is smoother than your pickup lines",
-                "Your head is causing more global warming than fossil fuels",
-                "You don't need a flashlight, you just need to tilt your head",
-                "Your hair took one look at 30 and said 'I'm out'",
-                "Your head is more polished than your resume"
-            ];
-
-            let burnCount = 0;
-            let usedRoasts = new Set();
-            const baldHead = document.getElementById('baldHead');
-            const roastDisplay = document.getElementById('roastDisplay');
-            const burnCounter = document.getElementById('burnCounter');
-
-            function getRandomRoast() {
-                if (usedRoasts.size >= roasts.length) {
-                    usedRoasts.clear(); // Reset if all roasts have been used
-                }
-                
-                let randomRoast;
-                do {
-                    randomRoast = roasts[Math.floor(Math.random() * roasts.length)];
-                } while (usedRoasts.has(randomRoast));
-                
-                usedRoasts.add(randomRoast);
-                return randomRoast;
-            }
-
-            baldHead.addEventListener('click', () => {
-                const roast = getRandomRoast();
-                roastDisplay.textContent = roast;
-                burnCount++;
-                burnCounter.textContent = `Roasts delivered: ${burnCount}`;
-                
-                // Make the head do a spin
-                baldHead.style.transition = 'transform 0.5s';
-                baldHead.style.transform = `rotate(${360 * burnCount}deg)`;
-            });
-
-            // Make the bald head follow the mouse
-            document.addEventListener('mousemove', (e) => {
-                const head = document.querySelector('.bald-head');
-                const rect = head.getBoundingClientRect();
-                const centerX = rect.left + rect.width / 2;
-                const centerY = rect.top + rect.height / 2;
-                
-                const angle = Math.atan2(e.clientY - centerY, e.clientX - centerX) * 10;
-                head.style.transform = `rotate(${angle}deg)`;
-            });
-        </script>
     </div>
 </body>
 </html>
+<style> 
+
+    /* Base Styles */
+:root {
+    --brick-red: #8b4513;
+    --wood-brown: #5c4033;
+    --smoke-gray: rgba(128, 128, 128, 0.8);
+    --led-purple: #9d4edd;
+    --neon-green: #39ff14;
+    --lava-orange: #ff4e00;
+    --parchment: #ffe5b4;
+    --screen-glow: 0 0 10px rgba(57, 255, 20, 0.5);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Smooch Sans', sans-serif;
+    background: #1a1a1a;
+    color: var(--parchment);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* LED Strip Effects */
+.led-strip {
+    position: fixed;
+    background: linear-gradient(90deg, 
+        transparent 0%,
+        var(--led-purple) 50%,
+        transparent 100%);
+    opacity: 0.6;
+    z-index: 1;
+}
+
+.led-strip.top, .led-strip.bottom {
+    height: 2px;
+    width: 100%;
+    animation: ledPulse 3s infinite;
+}
+
+.led-strip.left, .led-strip.right {
+    width: 2px;
+    height: 100%;
+    animation: ledPulse 3s infinite reverse;
+}
+
+.led-strip.top { top: 0; }
+.led-strip.bottom { bottom: 0; }
+.led-strip.left { left: 0; }
+.led-strip.right { right: 0; }
+
+@keyframes ledPulse {
+    0% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+    100% { opacity: 0.3; }
+}
+
+/* Smoke Animation */
+.smoke-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.smoke {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='noise' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.005' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.3'/%3E%3C/svg%3E");
+    opacity: 0.1;
+    animation: smoke 20s linear infinite;
+}
+
+@keyframes smoke {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(-50%) scale(1.5); }
+}
+
+/* Main Layout */
+.content {
+    position: relative;
+    z-index: 3;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.cave-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr 300px;
+    gap: 20px;
+    max-width: 1800px;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+/* Cave Header */
+.cave-header {
+    text-align: center;
+    padding: 40px 0;
+    margin-bottom: 20px;
+}
+
+.neon-sign {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 5rem;
+    color: var(--neon-green);
+    text-shadow: 0 0 10px var(--neon-green),
+                 0 0 20px var(--neon-green),
+                 0 0 30px var(--neon-green);
+    margin-bottom: 10px;
+}
+
+.neon-sign span {
+    display: inline-block;
+    animation: neonFlicker 2s infinite;
+}
+
+.flicker-slow { animation: neonFlicker 3s infinite; }
+.flicker-fast { animation: neonFlicker 1s infinite; }
+
+@keyframes neonFlicker {
+    0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+        opacity: 1;
+    }
+    20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+        opacity: 0.4;
+    }
+}
+
+/* Wall Panels */
+.wall {
+    background: var(--brick-red);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.brick-panel {
+    background: var(--wood-brown);
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.brick-panel h2 {
+    font-family: 'Permanent Marker', cursive;
+    color: var(--parchment);
+    text-align: center;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Lava Lamp Effect */
+.lava-lamp {
+    background: linear-gradient(45deg, #000, #1a1a1a);
+    border-radius: 10px;
+    padding: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.blaze-meter {
+    height: 150px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 75px;
+    overflow: hidden;
+    position: relative;
+}
+
+.blaze-level {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(180deg,
+        var(--lava-orange) 0%,
+        var(--neon-green) 100%);
+    transition: height 0.5s ease;
+    border-radius: 75px;
+}
+
+.blaze-level::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='noise' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.015' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E");
+    animation: lavaMove 10s linear infinite;
+}
+
+@keyframes lavaMove {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-100%); }
+}
+/* Buttons and Inputs */
+.wood-button {
+    background: var(--wood-brown);
+    border: 2px solid var(--parchment);
+    color: var(--parchment);
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.wood-button:hover {
+    background: var(--parchment);
+    color: var(--wood-brown);
+    transform: translateY(-2px);
+}
+
+.parchment-input {
+    background: var(--parchment);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-family: 'Smooch Sans', sans-serif;
+    font-size: 1.1rem;
+    color: var(--wood-brown);
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* Gaming Zone */
+.gaming-zone {
+    background: #000;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
+}
+
+.tv-screen {
+    background: #111;
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.tv-screen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        transparent 50%,
+        rgba(0, 0, 0, 0.025) 50%
+    );
+    background-size: 100% 4px;
+    animation: scanline 10s linear infinite;
+}
+
+@keyframes scanline {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(100%); }
+}
+
+.champions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.champ-card {
+    background: rgba(57, 255, 20, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.champ-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--screen-glow);
+}
+
+/* Session Screen */
+.session-screen {
+    background: #000;
+    border-radius: 20px;
+    padding: 20px;
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+.screen-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        transparent 50%,
+        rgba(57, 255, 20, 0.03) 50%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+}
+
+.session-log {
+    height: 100%;
+    overflow-y: auto;
+    color: var(--neon-green);
+    font-family: monospace;
+    padding: 10px;
+}
+
+.session-log div {
+    margin-bottom: 8px;
+    text-shadow: 0 0 5px var(--neon-green);
+}
+
+/* Sound System */
+.retro-player {
+    background: #000;
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+}
+
+.vinyl-record {
+    display: inline-block;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+.eq-visualizer {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin: 15px 0;
+    height: 50px;
+}
+
+.eq-bar {
+    width: 10px;
+    background: var(--neon-green);
+    border-radius: 5px;
+    animation: equalize 1s ease-in-out infinite;
+}
+
+.eq-bar:nth-child(1) { animation-delay: 0.0s; }
+.eq-bar:nth-child(2) { animation-delay: 0.2s; }
+.eq-bar:nth-child(3) { animation-delay: 0.4s; }
+.eq-bar:nth-child(4) { animation-delay: 0.6s; }
+
+@keyframes equalize {
+    0%, 100% { height: 10px; }
+    50% { height: 40px; }
+}
+
+/* Easter Eggs */
+.easter-eggs div {
+    position: fixed;
+    font-size: 2rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    opacity: 0;
+    transform: scale(0);
+}
+
+.easter-eggs div.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .cave-grid {
+        grid-template-columns: 250px 1fr 250px;
+    }
+}
+
+@media (max-width: 900px) {
+    .cave-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .wall {
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .neon-sign {
+        font-size: 3rem;
+    }
+    
+    .brick-panel {
+        padding: 10px;
+    }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--wood-brown);
+    border-radius: 5px;
+    border: 2px solid var(--parchment);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--brick-red);
+}
+</style>
+<script>
+    class CaveSystem {
+    constructor() {
+        // Core state
+        this.blazeLevel = 0;
+        this.musicPlaying = false;
+        this.activeEffects = new Set();
+        this.easterEggs = new Map();
+        this.sessionData = {
+            dips: this.loadFromStorage('dips') || {},
+            feeders: this.loadFromStorage('feeders') || {},
+            achievements: this.loadFromStorage('achievements') || [],
+            vibeScore: this.loadFromStorage('vibeScore') || 420,
+        };
+
+        // Audio contexts
+        this.audioCtx = null;
+        this.gainNode = null;
+        this.analyser = null;
+        
+        // Initialize systems
+        this.initializeCore();
+        this.initializeAudio();
+        this.initializeEffects();
+        this.initializeEasterEggs();
+        this.setupEventListeners();
+    }
+
+    // Core Initialization
+    initializeCore() {
+        // Smoke effect intensity control
+        this.smokeIntensity = 0.1;
+        document.querySelector('.smoke').style.opacity = this.smokeIntensity;
+
+        // LED animation synchronization
+        document.querySelectorAll('.led-strip').forEach(strip => {
+            strip.style.animationDelay = `${Math.random() * 2}s`;
+        });
+
+        // Initialize session log
+        this.logEvent('Welcome to the 420 Cave... Blazing since 4:20 🌿');
+    }
+
+    // Audio System
+    initializeAudio() {
+        // Playlist definitions
+        this.playlists = {
+            chill: {
+                name: 'Chill Hop',
+                bpm: 80,
+                visualizerSpeed: 1.2
+            },
+            reggae: {
+                name: 'Reggae Vibes',
+                bpm: 90,
+                visualizerSpeed: 1
+            },
+            lofi: {
+                name: 'Lo-Fi Beats',
+                bpm: 85,
+                visualizerSpeed: 0.8
+            },
+            classic: {
+                name: 'Classic Rock',
+                bpm: 120,
+                visualizerSpeed: 1.5
+            }
+        };
+
+        // Initialize audio context on first user interaction
+        document.getElementById('playMusic').addEventListener('click', () => {
+            if (!this.audioCtx) {
+                this.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                this.setupAudioNodes();
+            }
+            this.toggleMusic();
+        });
+    }
+
+    setupAudioNodes() {
+        this.gainNode = this.audioCtx.createGain();
+        this.analyser = this.audioCtx.createAnalyser();
+        this.analyser.fftSize = 256;
+        
+        // Connect nodes
+        this.gainNode.connect(this.analyser);
+        this.analyser.connect(this.audioCtx.destination);
+        
+        // Start visualizer
+        this.updateVisualizer();
+    }
+
+    updateVisualizer() {
+        if (!this.analyser) return;
+        
+        const bufferLength = this.analyser.frequencyBinCount;
+        const dataArray = new Uint8Array(bufferLength);
+        const bars = document.querySelectorAll('.eq-bar');
+        
+        const updateBars = () => {
+            this.analyser.getByteFrequencyData(dataArray);
+            
+            bars.forEach((bar, index) => {
+                const barIndex = Math.floor(index * (bufferLength / bars.length));
+                const barHeight = (dataArray[barIndex] / 255) * 50;
+                bar.style.height = `${barHeight}px`;
+            });
+
+            if (this.musicPlaying) {
+                requestAnimationFrame(updateBars);
+            }
+        };
+
+        updateBars();
+    }
+
+    // Visual Effects System
+    initializeEffects() {
+        // Lava lamp effect
+        this.lavaEffect = {
+            active: false,
+            intensity: 0,
+            update: () => {
+                if (this.lavaEffect.active) {
+                    this.lavaEffect.intensity = Math.min(1, this.lavaEffect.intensity + 0.05);
+                    document.querySelector('.blaze-level').style.filter = 
+                        `brightness(${1 + this.lavaEffect.intensity})
+                         contrast(${1 + this.lavaEffect.intensity * 0.5})`;
+                    requestAnimationFrame(this.lavaEffect.update);
+                }
+            }
+        };
+
+        // TV screen effect
+        this.scanlineEffect = {
+            element: document.querySelector('.tv-screen'),
+            glitchInterval: null,
+            triggerGlitch: () => {
+                if (Math.random() < 0.3) { // 30% chance of glitch
+                    this.scanlineEffect.element.style.transform = `translateX(${Math.random() * 10 - 5}px)`;
+                    setTimeout(() => {
+                        this.scanlineEffect.element.style.transform = 'none';
+                    }, 50);
+                }
+            }
+        };
+
+        // Start scanline glitch effect
+        this.scanlineEffect.glitchInterval = setInterval(this.scanlineEffect.triggerGlitch, 5000);
+    }
+
+    // Easter Eggs System
+    initializeEasterEggs() {
+        const eggPositions = [
+            { x: '10%', y: '20%' },
+            { x: '85%', y: '15%' },
+            { x: '45%', y: '75%' },
+            { x: '75%', y: '60%' },
+            { x: '15%', y: '85%' }
+        ];
+
+        document.querySelectorAll('.easter-eggs div').forEach((egg, index) => {
+            egg.style.left = eggPositions[index % eggPositions.length].x;
+            egg.style.top = eggPositions[index % eggPositions.length].y;
+            
+            egg.addEventListener('click', () => this.triggerEasterEgg(egg));
+        });
+
+        // Konami code implementation
+        let keys = [];
+        const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 
+                           'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+        
+        document.addEventListener('keydown', (e) => {
+            keys.push(e.key);
+            keys = keys.slice(-10);
+            if (keys.join(',') === konamiCode.join(',')) {
+                this.triggerKonamiCode();
+            }
+        });
+    }}
+</script>
+    
