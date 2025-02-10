@@ -1,444 +1,247 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Combat Squad Selection</title>
+    <title>Ultimate Balding Roast</title>
     <style>
-        :root {
-            --camo-dark: #4b5320;
-            --camo-mid: #7e8455;
-            --camo-light: #a3a375;
-            --camo-tan: #b7a888;
-            --accent: #c1a62e;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes scanline {
-            0% { transform: translateY(-100%); }
-            100% { transform: translateY(100%); }
-        }
-
         body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
             margin: 0;
+            color: white;
+            text-align: center;
             padding: 20px;
-            background-color: #1a1a1a;
-            background-image: 
-                linear-gradient(45deg, 
-                    rgba(75, 83, 32, 0.4) 25%, 
-                    rgba(67, 75, 29, 0.4) 25%, 
-                    rgba(67, 75, 29, 0.4) 50%, 
-                    rgba(75, 83, 32, 0.4) 50%, 
-                    rgba(75, 83, 32, 0.4) 75%, 
-                    rgba(67, 75, 29, 0.4) 75%, 
-                    rgba(67, 75, 29, 0.4));
-            background-size: 40px 40px;
-            font-family: 'Courier New', monospace;
-            color: #e0e0e0;
         }
 
         .container {
             max-width: 800px;
-            margin: 0 auto;
-            background-color: rgba(0, 0, 0, 0.9);
-            padding: 30px;
-            border: 2px solid var(--accent);
-            border-radius: 8px;
-            box-shadow: 0 0 20px rgba(193, 166, 46, 0.3);
-            position: relative;
-            overflow: hidden;
         }
 
-        .container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: rgba(193, 166, 46, 0.5);
-            animation: scanline 2s linear infinite;
-        }
-
-        .header {
-            text-align: center;
+        h1 {
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             margin-bottom: 30px;
-            border-bottom: 3px double var(--accent);
-            padding-bottom: 20px;
-            position: relative;
         }
 
-        .header::before, .header::after {
-            content: '★';
-            color: var(--accent);
-            position: absolute;
-            bottom: -15px;
-            font-size: 24px;
-        }
-
-        .header::before { left: 20px; }
-        .header::after { right: 20px; }
-
-        .header h1 {
-            color: var(--accent);
-            font-size: 2.2em;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            text-shadow: 0 0 10px rgba(193, 166, 46, 0.5);
-            letter-spacing: 3px;
-        }
-
-        .requirements {
-            background: linear-gradient(
-                45deg,
-                rgba(75, 83, 32, 0.3),
-                rgba(67, 75, 29, 0.3)
-            );
-            padding: 20px;
-            border-left: 4px solid var(--accent);
-            margin-bottom: 25px;
-            animation: fadeIn 1s ease-out;
-        }
-
-        .requirements h3 {
-            color: var(--accent);
-            margin-top: 0;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .requirements ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .requirements li {
-            padding: 5px 0 5px 25px;
-            position: relative;
-        }
-
-        .requirements li::before {
-            content: '►';
-            color: var(--accent);
-            position: absolute;
-            left: 0;
-            font-size: 12px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 15px;
-            border-radius: 4px;
-            border: 1px solid rgba(193, 166, 46, 0.3);
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        input[type="number"],
-        input[type="tel"],
-        select,
-        textarea {
-            width: 100%;
-            padding: 12px;
-            background-color: rgba(0, 0, 0, 0.7);
-            border: 1px solid var(--accent);
-            border-radius: 4px;
-            color: #e0e0e0;
-            font-family: 'Courier New', monospace;
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
-
-        input:focus,
-        select:focus,
-        textarea:focus {
-            outline: none;
-            box-shadow: 0 0 10px rgba(193, 166, 46, 0.5);
-        }
-
-        button {
-            background: linear-gradient(
-                45deg,
-                var(--camo-dark),
-                var(--camo-mid)
-            );
-            color: #e0e0e0;
-            padding: 15px 30px;
-            border: 2px solid var(--accent);
-            border-radius: 4px;
+        .bald-head {
+            font-size: 100px;
+            margin: 20px;
+            animation: shine 2s infinite;
             cursor: pointer;
-            font-weight: bold;
-            font-size: 16px;
-            text-transform: uppercase;
-            width: 100%;
-            letter-spacing: 2px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            user-select: none;
         }
 
-        button:hover {
-            background: var(--accent);
-            color: #000;
-            box-shadow: 0 0 15px rgba(193, 166, 46, 0.5);
+        .message {
+            font-size: 1.5em;
+            margin: 20px;
+            background: rgba(0,0,0,0.2);
+            padding: 20px;
+            border-radius: 10px;
         }
 
-        .classification {
-            color: var(--accent);
-            text-align: center;
-            font-weight: bold;
-            margin: 20px 0;
-            padding: 10px;
-            border-top: 1px solid var(--accent);
-            border-bottom: 1px solid var(--accent);
-            letter-spacing: 2px;
-            background: rgba(0, 0, 0, 0.5);
+        @keyframes shine {
+            0% { text-shadow: 0 0 5px yellow; }
+            50% { text-shadow: 0 0 20px yellow, 0 0 30px yellow; }
+            100% { text-shadow: 0 0 5px yellow; }
         }
 
-        .status {
-            padding: 15px;
-            border-radius: 4px;
-            margin-top: 15px;
-            display: none;
-            text-align: center;
-            font-weight: bold;
+        .savage-burns {
+            font-size: 24px;
+            margin: 20px;
+            padding: 20px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 10px;
+            min-height: 100px;
         }
 
-        .error {
-            background-color: rgba(200, 0, 0, 0.2);
-            border: 1px solid #800000;
-            color: #ff4444;
-        }
-
-        .success {
-            background-color: rgba(0, 100, 0, 0.2);
-            border: 1px solid #006400;
-            color: #00ff00;
-        }
-
-        .military-badge {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 20px;
-            background: var(--accent);
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .military-badge::before {
-            content: '★';
-            font-size: 40px;
-            color: #000;
-        }
-
-        select {
-            appearance: none;
-            background-image: linear-gradient(45deg, transparent 50%, var(--accent) 50%),
-                            linear-gradient(135deg, var(--accent) 50%, transparent 50%);
-            background-position: calc(100% - 20px) calc(1em + 2px),
-                               calc(100% - 15px) calc(1em + 2px);
-            background-size: 5px 5px,
-                           5px 5px;
-            background-repeat: no-repeat;
+        #burnCounter {
+            font-size: 18px;
+            margin-top: 20px;
+            color: #ffe066;
         }
 
         @media (max-width: 600px) {
-            .container {
-                padding: 15px;
-            }
-
-            .header h1 {
-                font-size: 1.8em;
-            }
-
-            .military-badge {
-                width: 80px;
-                height: 80px;
-            }
+            h1 { font-size: 2em; }
+            .message { font-size: 1.2em; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="classification">
-            TOP SECRET // SPECIAL ACCESS REQUIRED
+        <h1>30 & Balding: The Ultimate Roast</h1>
+        
+        <div class="bald-head" id="baldHead">👨‍🦲</div>
+        
+        <div class="message">
+            Warning: These roasts are shinier than your head
         </div>
 
-        <div class="header">
-            <div class="military-badge"></div>
-            <h1>Combat Squad Selection</h1>
-            <p>Special Operations Combat Unit Assessment</p>
+        <div class="savage-burns" id="roastDisplay">
+            Click the bald head for devastating roasts!
         </div>
 
-        <div class="requirements">
-            <h3>Minimum Requirements:</h3>
-            <ul>
-                <li>Active duty service member, Tier 1 unit experience preferred</li>
-                <li>Minimum rank of E-4 (Corporal/Specialist)</li>
-                <li>Advanced combat training certification</li>
-                <li>Physical fitness test score of 270 or higher</li>
-                <li>Top Secret/SCI clearance required</li>
-                <li>Combat deployment experience</li>
-                <li>Advanced weapons qualification</li>
-                <li>Special operations background preferred</li>
-            </ul>
-        </div>
+        <div id="burnCounter">Roasts delivered: 0</div>
 
-        <form id="recruitmentForm">
-            <div class="form-group">
-                <label for="fullName">Full Name (Last, First, MI)</label>
-                <input type="text" id="fullName" required>
-            </div>
+        <script>
+            const roasts = [
+                // Original roasts
+                "Your hairline is playing hide and seek, and it's winning",
+                "You're not balding, your head is just growing",
+                "Your forehead is so big, it's more like a five-head",
+                
+                // Personal life roasts
+                "Your dating profile says 'love long walks on the beach' but your head says 'love long walks under umbrellas'",
+                "You don't need a mirror to do your hair anymore, just a cloth to polish",
+                "Your hair didn't leave you, it just went to find someone more committed",
+                "You're not losing hair, you're gaining face",
+                "Your head is so reflective, you're single-handedly fighting global warming",
+                "You don't go bald, you level up to premium dome status",
+                "Your hair took early retirement at 30",
+                "Your head is so shiny, it's causing light pollution",
+                "You could rent out your forehead as advertising space",
+                "Your hairline is social distancing from your eyebrows",
+                "You're not balding, you're just doing a solar panel installation",
+                "Your head doubles as an emergency signal mirror",
+                "Your hair follicles filed for unemployment",
+                "Your head is so smooth, it makes dolphins jealous",
+                "You don't need hair gel anymore, just Windex",
+                "Your head is so reflective, it's interfering with air traffic control",
+                
+                // Weather-related roasts
+                "You have to wear sunscreen on your head in the moonlight",
+                "Birds mistake your head for a small sun",
+                "Your head creates its own weather system of glare",
+                "You cause more glare than a solar farm",
+                "Your head is so shiny, it's affecting local weather patterns",
+                
+                // Technology roasts
+                "Your head has better reception than my WiFi",
+                "Your head shows up on Google Earth's highlights",
+                "Your head is brighter than my phone screen at full brightness",
+                "Satellites use your head for calibration",
+                "Your head has more gleam than a fresh iPhone screen",
+                
+                // Movie theater roasts
+                "Movie theaters ask you to dim your head during screenings",
+                "IMAX wants to study your head's reflective properties",
+                "Your head provides better projection than most movie theaters",
+                
+                // Professional life roasts
+                "You save money on lighting by just tilting your head",
+                "Your LinkedIn profile pic is just lens flare",
+                "Your head's so shiny, you got sponsored by Turtle Wax",
+                "You could get a side job as a disco ball",
+                "Your career is growing as fast as your forehead",
+                
+                // Sports-related roasts
+                "Bowling balls are jealous of your head's shine",
+                "Olympic swimmers want to study your head's aerodynamics",
+                "Your head has less resistance than a competitive swimsuit",
+                
+                // Historical roasts
+                "Your hairline is receding faster than the Roman Empire",
+                "Your baldness spread faster than the British Empire",
+                "Your hair history is shorter than a Twitter post",
+                
+                // Scientific roasts
+                "Your head defies the laws of reflection",
+                "Scientists study your head to understand black holes",
+                "Your head generates more solar energy than a Tesla roof",
+                "NASA uses your head to test new telescope lenses",
+                
+                // Seasonal roasts
+                "In winter, your head melts snow faster than salt",
+                "In summer, your head causes more heat waves than global warming",
+                "Your head changes seasons faster than climate change",
+                
+                // Fashion roasts
+                "You don't need hats, you need head dimmers",
+                "Your head is more polished than your shoes",
+                "You don't wear caps, you wear satellite dishes",
+                
+                // Home life roasts
+                "Your head lights up rooms better than ceiling lights",
+                "You save on electricity by using your head as a reading light",
+                "Your head's reflection heats your home in winter",
+                
+                // Future predictions
+                "By 35, your head will be visible from Mars",
+                "In 5 years, your head will replace solar panels",
+                "Eventually, your head will become Earth's second moon",
+                
+                // Modern life roasts
+                "Your head has more shine than my future",
+                "Your reflection causes more traffic accidents than texting",
+                "Instagram can't handle your head's natural filter",
+                
+                // Additional savage burns
+                "Your hair didn't ghost you, it just saw its future and ran",
+                "You're not going bald, your hair is just socially distant",
+                "Your head is so reflective, blind people use it for echolocation",
+                "Your scalp is doing a better job at solar power than Tesla",
+                "Your head acts as a backup for the Bat-Signal",
+                "You don't need night vision, you just tilt your head toward the moon",
+                "Your hairline is more distant than my ex",
+                "Your head has better satellite reception than NASA",
+                "You're not balding, you're evolving into a human lighthouse",
+                "Your head is so shiny, it's causing climate change",
+                "Your forehead has more real estate than Manhattan",
+                "Your hair didn't leave you, it just went out for milk like your dad",
+                "Your head is brighter than my phone at 3 AM",
+                "You're not losing hair, you're gaining solar panel efficiency",
+                "Your head reflects more light than a supernova",
+                "Your scalp is smoother than your pickup lines",
+                "Your head is causing more global warming than fossil fuels",
+                "You don't need a flashlight, you just need to tilt your head",
+                "Your hair took one look at 30 and said 'I'm out'",
+                "Your head is more polished than your resume"
+            ];
 
-            <div class="form-group">
-                <label for="serviceNumber">Service Number/DoD ID</label>
-                <input type="text" id="serviceNumber" required>
-            </div>
+            let burnCount = 0;
+            let usedRoasts = new Set();
+            const baldHead = document.getElementById('baldHead');
+            const roastDisplay = document.getElementById('roastDisplay');
+            const burnCounter = document.getElementById('burnCounter');
 
-            <div class="form-group">
-                <label for="rank">Current Rank</label>
-                <select id="rank" required>
-                    <option value="">Select Rank</option>
-                    <option value="e4">E-4 (CPL/SPC)</option>
-                    <option value="e5">E-5 (SGT)</option>
-                    <option value="e6">E-6 (SSG)</option>
-                    <option value="e7">E-7 (SFC)</option>
-                    <option value="e8">E-8 (MSG/1SG)</option>
-                    <option value="e9">E-9 (SGM/CSM)</option>
-                </select>
-            </div>
+            function getRandomRoast() {
+                if (usedRoasts.size >= roasts.length) {
+                    usedRoasts.clear(); // Reset if all roasts have been used
+                }
+                
+                let randomRoast;
+                do {
+                    randomRoast = roasts[Math.floor(Math.random() * roasts.length)];
+                } while (usedRoasts.has(randomRoast));
+                
+                usedRoasts.add(randomRoast);
+                return randomRoast;
+            }
 
-            <div class="form-group">
-                <label for="unit">Current Unit Assignment</label>
-                <input type="text" id="unit" required>
-            </div>
+            baldHead.addEventListener('click', () => {
+                const roast = getRandomRoast();
+                roastDisplay.textContent = roast;
+                burnCount++;
+                burnCounter.textContent = `Roasts delivered: ${burnCount}`;
+                
+                // Make the head do a spin
+                baldHead.style.transition = 'transform 0.5s';
+                baldHead.style.transform = `rotate(${360 * burnCount}deg)`;
+            });
 
-            <div class="form-group">
-                <label for="mos">Primary MOS/Combat Specialty</label>
-                <input type="text" id="mos" required>
-            </div>
-
-            <div class="form-group">
-                <label for="clearance">Security Clearance Level</label>
-                <select id="clearance" required>
-                    <option value="">Select Clearance</option>
-                    <option value="secret">Secret</option>
-                    <option value="topsecret">Top Secret</option>
-                    <option value="sci">TS/SCI</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="ptScore">Current Physical Fitness Score</label>
-                <input type="number" id="ptScore" min="0" max="300" required>
-            </div>
-
-            <div class="form-group">
-                <label for="combatDeployments">Combat Deployment History</label>
-                <textarea id="combatDeployments" rows="3" 
-                    placeholder="List locations, dates, and operation names..." required></textarea>
-            </div>
-
-            <div class="form-group">
-                <label for="specialQuals">Special Qualifications</label>
-                <textarea id="specialQuals" rows="3" 
-                    placeholder="List combat schools, special training, certifications..." required></textarea>
-            </div>
-
-            <div class="form-group">
-                <label for="weapons">Advanced Weapons Qualifications</label>
-                <select id="weapons" required>
-                    <option value="">Select Qualification</option>
-                    <option value="expert">Expert - All Weapons</option>
-                    <option value="advanced">Advanced Qualified</option>
-                    <option value="instructor">Combat Instructor</option>
-                    <option value="master">Master Gunner</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="specialOps">Special Operations Experience</label>
-                <textarea id="specialOps" rows="3" 
-                    placeholder="Detail your special operations experience..." required></textarea>
-            </div>
-
-            <div class="form-group">
-                <label for="medicalStatus">Combat Ready Status</label>
-                <select id="medicalStatus" required>
-                    <option value="">Select Status</option>
-                    <option value="fully">Full Combat Ready</option>
-                    <option value="limited">Limited Duty</option>
-                    <option value="medical">Medical Review Required</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="contact">Secure Contact Information</label>
-                <input type="email" placeholder="Military Email" required style="margin-bottom: 10px;">
-                <input type="tel" placeholder="Secure Line (DSN)" required>
-            </div>
-
-            <div class="form-group">
-                <label for="commander">Command Authorization</label>
-                <input type="text" placeholder="Commander's Name and Rank" required style="margin-bottom: 10px;">
-                <input type="tel" placeholder="Command Post Contact Number" required>
-            </div>
-
-            <button type="submit">Submit For Review</button>
-        </form>
-
-        <div id="statusMessage" class="status"></div>
-
-        <div class="classification">
-            TOP SECRET // NOFORN // SPECIAL ACCESS REQUIRED
-        </div>
+            // Make the bald head follow the mouse
+            document.addEventListener('mousemove', (e) => {
+                const head = document.querySelector('.bald-head');
+                const rect = head.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                
+                const angle = Math.atan2(e.clientY - centerY, e.clientX - centerX) * 10;
+                head.style.transform = `rotate(${angle}deg)`;
+            });
+        </script>
     </div>
-
-    <script>
-        document.getElementById('recruitmentForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const ptScore = parseInt(document.getElementById('ptScore').value);
-            const clearance = document.getElementById('clearance').value;
-            const statusMessage = document.getElementById('statusMessage');
-            
-            if (ptScore < 270) {
-                statusMessage.textContent = "NOTICE: Minimum PT score of 270 required for combat operations.";
-                statusMessage.className = "status error";
-                statusMessage.style.display = "block";
-                return;
-            }
-
-            if (clearance !== 'sci') {
-                statusMessage.textContent = "NOTICE: TS/SCI clearance required for this unit.";
-                statusMessage.className = "status error";
-                statusMessage.style.display = "block";
-                return;
-            }
-            
-            statusMessage.textContent = "ACKNOWLEDGED: Your application has been submitted for review. " +
-                "If selected, you will be contacted through secure channels within 72 hours. " +
-                "MAINTAIN RADIO SILENCE.";
-            statusMessage.className = "status success";
-            statusMessage.style.display = "block";
-        });
-    </script>
 </body>
 </html>
